@@ -20,7 +20,7 @@ class Home extends Component {
         "https://s3-ap-southeast-1.amazonaws.com/he-public-data/books8f8fe52.json"
       )
       .then((res) => {
-        const books = res.data.slice(0, 10);
+        const books = res.data.slice(0, 99);
         console.log(books);
         this.props.dispatch(addBooks(books));
       });
@@ -49,11 +49,28 @@ class Home extends Component {
     const { books } = this.props.books;
     console.log(books, "books", books.length, "rendered");
     return (
-      <div className="cardsArea" style={mystyle}>
-        {books.length &&
-          books.map((book, index) => {
-            return <BookCard key={index} book={book} />;
-          })}
+      <div className="container-fluid">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Authors</th>
+              <th scope="col">Language</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Price</th>
+              <th scope=""></th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.length ? (
+              books.map((book, index) => {
+                return <BookCard key={index} book={book} />;
+              })
+            ) : (
+              <p>No Books Found</p>
+            )}
+          </tbody>
+        </table>
       </div>
     );
   }
