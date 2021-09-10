@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { home, Navbar } from ".";
+import { Home, Navbar, Cart } from ".";
 
 class App extends React.Component {
   render() {
@@ -10,7 +10,8 @@ class App extends React.Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path="/" component={home} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/cart" component={Cart} />
           </Switch>
         </div>
       </Router>

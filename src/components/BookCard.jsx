@@ -1,7 +1,12 @@
 import React from "react";
+import Rating from "@material-ui/lab/Rating";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
 
 class BookCard extends React.Component {
   render() {
+    //console.log(this.props.book, "book");
     let title = this.props.book.title;
     if (this.props.book.title.length > 80) {
       title = this.props.book.title.substring(0, 79);
@@ -51,13 +56,31 @@ class BookCard extends React.Component {
     }
     return (
       <tr>
-        <tr>{title}</tr>
+        <td>{title}</td>
+        <td>
+          <Tooltip title="Wishlist">
+            <IconButton aria-label="FavoriteBorder">
+              <FavoriteBorderIcon />
+            </IconButton>
+          </Tooltip>
+        </td>
         <td>{authors}</td>
         <td>{Fixedlangauge}</td>
-        <td>{this.props.book.average_rating}</td>
+        <td>
+          <Rating
+            name="half-rating-read"
+            defaultValue={this.props.book.average_rating}
+            precision={0.01}
+            readOnly
+          />
+        </td>
         <td>{this.props.book.price} Rs</td>
         <td>
-          <button type="button" class="btn btn-primary">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => this.props.handleAdd(this.props.book)}
+          >
             Add To Cart
           </button>
         </td>

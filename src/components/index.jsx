@@ -1,4 +1,6 @@
-import home from "./home";
+import Home from "./Home";
 import Navbar from "./navbar";
+import Pagination from "./Pagination";
+import Cart from "./Cart";
 
-export { home, Navbar };
+export { Home, Navbar, Pagination, Cart };
